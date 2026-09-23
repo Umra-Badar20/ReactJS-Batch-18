@@ -1,0 +1,10 @@
+@import "tailwindcss";
+body{
+    background-color: black;
+    color: aliceblue !important;
+}
+h1{
+    font-weight: 800;
+    font-size: 68px;
+    text-align: center;
+}
