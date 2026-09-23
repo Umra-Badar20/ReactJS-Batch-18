@@ -1,29 +1,17 @@
-import React from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import React, { useContext } from 'react'
+import Nav2 from './Nav2'
+import { PostDataContext } from '../context/ThemeContext';
 
-const Navbar = () => {
-  const location = useLocation()
-  let activeStyle ="underline font-bold text-cyan-300"
+const Navbar = (props) => {
+   const data= useContext(PostDataContext)
+    console.log(props, data);
   return (
-    <nav className='flex justify-between px-4 bg-cyan-800 text-amber-50 p-3'>
-        <h2 className='text-3xl'>Smit</h2>
-        {/* <div>
-          <Link className={`${location.pathname =="/" ?"underline":""} m-3`} to="/">Home</Link>
-          <Link className={`${location.pathname =="/about" ?"underline":""} m-3`} to="/about">About Us</Link>
-          <Link className={`${location.pathname =="/product" ?"underline":""} m-3`} to="/product">Product</Link>
-          <Link className={`${location.pathname =="/courses" ?"underline":""} m-3`} to="/courses">Courses</Link>
-          <Link className={`${location.pathname =="/contact" ?"underline":""} m-3`} to="/contact">Contact Us</Link>
-        </div> */}
-        <div>
-        <NavLink className={({isActive})=> isActive ?activeStyle :"m-3"}  to="/">Home</NavLink>
-        <NavLink className={({isActive})=> isActive ? activeStyle:"m-3"} to="/about">About</NavLink>
-        <NavLink className={({isActive})=> isActive ? activeStyle:"m-3"} to="/product">Product</NavLink>
-        <NavLink className={({isActive})=> isActive ? activeStyle:"m-3"} to="/courses">Courses</NavLink>
-        <NavLink className={({isActive})=> isActive ? "underline font-bold text-cyan-300":"m-3"} to="/contact">Contact Us</NavLink>
-
-        </div>
-        
-      </nav>
+    <div className='flex px-10 py-4  justify-between bg-blue-950'>
+      <h2 className='text-2xl'>{data[0]} rephrased to {data[1]}</h2>
+      <div>{props.children[0]}</div>
+      <div>{props.children[1]}</div>
+      <Nav2 theme={props.theme}/>
+    </div>
   )
 }
 
